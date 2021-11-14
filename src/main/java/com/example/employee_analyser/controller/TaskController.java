@@ -19,7 +19,7 @@ public class TaskController {
     }
 
     @GetMapping("/{page}")
-    public List<Task> getTasks(@PathVariable("page") int page){
+    public List<Task> getTasks(@PathVariable("page") int page) {
         return taskService.findAll(page);
     }
 }
