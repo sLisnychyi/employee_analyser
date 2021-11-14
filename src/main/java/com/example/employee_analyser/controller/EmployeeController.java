@@ -1,6 +1,7 @@
 package com.example.employee_analyser.controller;
 
 import com.example.employee_analyser.dto.EmployeeDto;
+import com.example.employee_analyser.dto.EmployeeTasksDto;
 import com.example.employee_analyser.entity.Employee;
 import com.example.employee_analyser.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +36,10 @@ public class EmployeeController {
         return Map.of("name_like", employees,
                 "name_salary_like", employeeBySalary,
                 "top3_salary", top3BySalary);
+    }
+
+    @GetMapping("/{id}/tasks")
+    public EmployeeTasksDto getEmployeeTasks(@PathVariable ("id") int id){
+        return employeeService.findById(id);
     }
 }

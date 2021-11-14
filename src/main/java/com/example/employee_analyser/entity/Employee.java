@@ -1,9 +1,20 @@
 package com.example.employee_analyser.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.Accessors;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "employees")
+@Getter
+@Setter
+@NoArgsConstructor
+@Accessors(chain = true)
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,46 +22,7 @@ public class Employee {
     private String name;
     private int salary;
     private int masterId;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public int getMasterId() {
-        return masterId;
-    }
-
-    public void setMasterId(int masterId) {
-        this.masterId = masterId;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", salary=" + salary +
-                ", masterId=" + masterId +
-                '}';
-    }
+    //Tasks
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Task> tasks;
 }
