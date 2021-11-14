@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Primary
+//@Primary
 public interface EmployeeJpaRepository extends CrudRepository<Employee, Integer> {
     Employee findByName(String name);
 
